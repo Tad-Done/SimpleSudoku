@@ -31,11 +31,16 @@
             this.buttonCheck = new System.Windows.Forms.Button();
             this.buttonGenerate = new System.Windows.Forms.Button();
             this.buttonAnswer = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItemMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemGen = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSolve = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCheck
             // 
-            this.buttonCheck.Location = new System.Drawing.Point(200, 511);
+            this.buttonCheck.Location = new System.Drawing.Point(200, 552);
             this.buttonCheck.Name = "buttonCheck";
             this.buttonCheck.Size = new System.Drawing.Size(114, 44);
             this.buttonCheck.TabIndex = 81;
@@ -45,7 +50,7 @@
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(12, 511);
+            this.buttonGenerate.Location = new System.Drawing.Point(12, 552);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(114, 44);
             this.buttonGenerate.TabIndex = 82;
@@ -55,7 +60,7 @@
             // 
             // buttonAnswer
             // 
-            this.buttonAnswer.Location = new System.Drawing.Point(387, 511);
+            this.buttonAnswer.Location = new System.Drawing.Point(387, 552);
             this.buttonAnswer.Name = "buttonAnswer";
             this.buttonAnswer.Size = new System.Drawing.Size(114, 44);
             this.buttonAnswer.TabIndex = 83;
@@ -63,20 +68,61 @@
             this.buttonAnswer.UseVisualStyleBackColor = true;
             this.buttonAnswer.Click += new System.EventHandler(this.buttonAnswer_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemMode});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(513, 32);
+            this.menuStrip1.TabIndex = 84;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ToolStripMenuItemMode
+            // 
+            this.ToolStripMenuItemMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemGen,
+            this.ToolStripMenuItemSolve});
+            this.ToolStripMenuItemMode.Name = "ToolStripMenuItemMode";
+            this.ToolStripMenuItemMode.Size = new System.Drawing.Size(58, 28);
+            this.ToolStripMenuItemMode.Text = "模式";
+            // 
+            // ToolStripMenuItemGen
+            // 
+            this.ToolStripMenuItemGen.Checked = true;
+            this.ToolStripMenuItemGen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ToolStripMenuItemGen.Name = "ToolStripMenuItemGen";
+            this.ToolStripMenuItemGen.Size = new System.Drawing.Size(211, 30);
+            this.ToolStripMenuItemGen.Text = "随机生成";
+            this.ToolStripMenuItemGen.Click += new System.EventHandler(this.ToolStripMenuItemGen_Click);
+            // 
+            // ToolStripMenuItemSolve
+            // 
+            this.ToolStripMenuItemSolve.Name = "ToolStripMenuItemSolve";
+            this.ToolStripMenuItemSolve.Size = new System.Drawing.Size(211, 30);
+            this.ToolStripMenuItemSolve.Text = "解答模式";
+            this.ToolStripMenuItemSolve.Click += new System.EventHandler(this.ToolStripMenuItemSolve_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 563);
+            this.ClientSize = new System.Drawing.Size(513, 608);
             this.Controls.Add(this.buttonAnswer);
             this.Controls.Add(this.buttonGenerate);
             this.Controls.Add(this.buttonCheck);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "数独";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -84,6 +130,10 @@
         private System.Windows.Forms.Button buttonCheck;
         private System.Windows.Forms.Button buttonGenerate;
         private System.Windows.Forms.Button buttonAnswer;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemMode;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemGen;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSolve;
     }
 }
 

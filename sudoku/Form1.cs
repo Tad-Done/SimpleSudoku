@@ -131,11 +131,13 @@ namespace sudoku
                 tb[i].ReadOnly = true;
                 tb[i].BackColor = SystemColors.Control;
                 tb[i].Font = new Font("宋体", 18F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(134)));
-                tb[i].Location = new Point(6 + 37 * (i % 9), 6 + 37 * (i / 9));
+                tb[i].Location = new Point(6 + 37 * (i % 9), 32 + 37 * (i / 9));
                 tb[i].MaxLength = 1;
                 
                 tb[i].Width=35;
                 tb[i].TabIndex = 83;
+
+                tb[i].TextChanged += textBox_TextChanged;
                 
                 Controls.Add(tb[i]);
                 cells[i % 9, i / 9] = new Cell();
@@ -149,19 +151,33 @@ namespace sudoku
             Graphics g = e.Graphics;
             for (int i = 0; i < 9; i++)
             {
-                g.DrawRectangle(Pens.Black, 5+37*3*(i/3), 5+37*3*(i%3),37*3-1, 37*3-1);
+                g.DrawRectangle(Pens.Black, 5+37*3*(i/3), 31+37*3*(i%3),37*3-1, 37*3-1);
             }
         }
 
-        private void tbInit()
+        private void tbInit(bool readOnly=true)
         {
             foreach(TextBox textBox in tb)
             {
                 textBox.Text = "";
                 textBox.BackColor = SystemColors.Control;
                 textBox.ForeColor = Color.Black;
-                textBox.ReadOnly = true;
+                textBox.ReadOnly = readOnly;
             }
+        }
+
+        private void SingleCheck(object sender)
+        {
+            foreach (ToolStripMenuItem menuitem in ToolStripMenuItemMode.DropDownItems)
+                menuitem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+        }
+
+        private void textBox_TextChanged(object sender,EventArgs e)
+        {
+            if (((TextBox)sender).Text.Length != 0)
+                if (((TextBox)sender).Text[0] < '0' || ((TextBox)sender).Text[0] > '9')
+                    ((TextBox)sender).Text = "";
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
@@ -302,6 +318,16 @@ namespace sudoku
                     return;
                 }
             }
+        }
+
+        private void ToolStripMenuItemGen_Click(object sender, EventArgs e)
+        {
+            SingleCheck(sender);
+        }
+
+        private void ToolStripMenuItemSolve_Click(object sender, EventArgs e)
+        {
+            SingleCheck(sender);
         }
     }
 }
