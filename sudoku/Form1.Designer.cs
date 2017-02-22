@@ -35,6 +35,11 @@
             this.ToolStripMenuItemMode = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemGen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSolve = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.难度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +59,7 @@
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(114, 44);
             this.buttonGenerate.TabIndex = 82;
-            this.buttonGenerate.Text = "生成";
+            this.buttonGenerate.Text = "新游戏";
             this.buttonGenerate.UseVisualStyleBackColor = true;
             this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
@@ -72,7 +77,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMode});
+            this.ToolStripMenuItemMode,
+            this.难度ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(513, 32);
@@ -104,11 +110,56 @@
             this.ToolStripMenuItemSolve.Text = "解答模式";
             this.ToolStripMenuItemSolve.Click += new System.EventHandler(this.ToolStripMenuItemSolve_Click);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(12, 552);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(114, 44);
+            this.buttonClear.TabIndex = 85;
+            this.buttonClear.Text = "清空";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Visible = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // 难度ToolStripMenuItem
+            // 
+            this.难度ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.easyToolStripMenuItem,
+            this.normalToolStripMenuItem,
+            this.hardToolStripMenuItem});
+            this.难度ToolStripMenuItem.Name = "难度ToolStripMenuItem";
+            this.难度ToolStripMenuItem.Size = new System.Drawing.Size(58, 28);
+            this.难度ToolStripMenuItem.Text = "难度";
+            // 
+            // easyToolStripMenuItem
+            // 
+            this.easyToolStripMenuItem.Checked = true;
+            this.easyToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.easyToolStripMenuItem.Name = "easyToolStripMenuItem";
+            this.easyToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.easyToolStripMenuItem.Text = "easy";
+            this.easyToolStripMenuItem.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
+            // 
+            // normalToolStripMenuItem
+            // 
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.normalToolStripMenuItem.Text = "normal";
+            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
+            // 
+            // hardToolStripMenuItem
+            // 
+            this.hardToolStripMenuItem.Name = "hardToolStripMenuItem";
+            this.hardToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.hardToolStripMenuItem.Text = "hard";
+            this.hardToolStripMenuItem.Click += new System.EventHandler(this.difficultToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 608);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonAnswer);
             this.Controls.Add(this.buttonGenerate);
             this.Controls.Add(this.buttonCheck);
@@ -134,6 +185,11 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemMode;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemGen;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSolve;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.ToolStripMenuItem 难度ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem easyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hardToolStripMenuItem;
     }
 }
 
