@@ -35,11 +35,18 @@
             this.ToolStripMenuItemMode = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemGen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSolve = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.难度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.清除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.蓝色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.红色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.绿色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.紫色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +85,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemMode,
-            this.难度ToolStripMenuItem});
+            this.难度ToolStripMenuItem,
+            this.编辑ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(513, 32);
@@ -99,27 +107,16 @@
             this.ToolStripMenuItemGen.Checked = true;
             this.ToolStripMenuItemGen.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ToolStripMenuItemGen.Name = "ToolStripMenuItemGen";
-            this.ToolStripMenuItemGen.Size = new System.Drawing.Size(211, 30);
+            this.ToolStripMenuItemGen.Size = new System.Drawing.Size(165, 30);
             this.ToolStripMenuItemGen.Text = "随机生成";
             this.ToolStripMenuItemGen.Click += new System.EventHandler(this.ToolStripMenuItemGen_Click);
             // 
             // ToolStripMenuItemSolve
             // 
             this.ToolStripMenuItemSolve.Name = "ToolStripMenuItemSolve";
-            this.ToolStripMenuItemSolve.Size = new System.Drawing.Size(211, 30);
+            this.ToolStripMenuItemSolve.Size = new System.Drawing.Size(165, 30);
             this.ToolStripMenuItemSolve.Text = "解答模式";
             this.ToolStripMenuItemSolve.Click += new System.EventHandler(this.ToolStripMenuItemSolve_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 552);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(114, 44);
-            this.buttonClear.TabIndex = 85;
-            this.buttonClear.Text = "清空";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Visible = false;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // 难度ToolStripMenuItem
             // 
@@ -136,23 +133,89 @@
             this.easyToolStripMenuItem.Checked = true;
             this.easyToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.easyToolStripMenuItem.Name = "easyToolStripMenuItem";
-            this.easyToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.easyToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.easyToolStripMenuItem.Text = "easy";
             this.easyToolStripMenuItem.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
             // 
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.normalToolStripMenuItem.Text = "normal";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
             // hardToolStripMenuItem
             // 
             this.hardToolStripMenuItem.Name = "hardToolStripMenuItem";
-            this.hardToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.hardToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.hardToolStripMenuItem.Text = "hard";
             this.hardToolStripMenuItem.Click += new System.EventHandler(this.difficultToolStripMenuItem_Click);
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(12, 552);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(114, 44);
+            this.buttonClear.TabIndex = 85;
+            this.buttonClear.Text = "清空";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Visible = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // 编辑ToolStripMenuItem
+            // 
+            this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.清除ToolStripMenuItem});
+            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(58, 28);
+            this.编辑ToolStripMenuItem.Text = "编辑";
+            // 
+            // 清除ToolStripMenuItem
+            // 
+            this.清除ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.蓝色格ToolStripMenuItem,
+            this.红色格ToolStripMenuItem,
+            this.绿色格ToolStripMenuItem,
+            this.紫色格ToolStripMenuItem});
+            this.清除ToolStripMenuItem.Name = "清除ToolStripMenuItem";
+            this.清除ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.清除ToolStripMenuItem.Text = "清除";
+            // 
+            // 蓝色格ToolStripMenuItem
+            // 
+            this.蓝色格ToolStripMenuItem.Name = "蓝色格ToolStripMenuItem";
+            this.蓝色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.蓝色格ToolStripMenuItem.Text = "蓝色格";
+            this.蓝色格ToolStripMenuItem.Click += new System.EventHandler(this.蓝色格ToolStripMenuItem_Click);
+            // 
+            // 红色格ToolStripMenuItem
+            // 
+            this.红色格ToolStripMenuItem.Name = "红色格ToolStripMenuItem";
+            this.红色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.红色格ToolStripMenuItem.Text = "红色格";
+            this.红色格ToolStripMenuItem.Click += new System.EventHandler(this.红色格ToolStripMenuItem_Click);
+            // 
+            // 绿色格ToolStripMenuItem
+            // 
+            this.绿色格ToolStripMenuItem.Name = "绿色格ToolStripMenuItem";
+            this.绿色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.绿色格ToolStripMenuItem.Text = "绿色格";
+            this.绿色格ToolStripMenuItem.Click += new System.EventHandler(this.绿色格ToolStripMenuItem_Click);
+            // 
+            // 紫色格ToolStripMenuItem
+            // 
+            this.紫色格ToolStripMenuItem.Name = "紫色格ToolStripMenuItem";
+            this.紫色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.紫色格ToolStripMenuItem.Text = "紫色格";
+            this.紫色格ToolStripMenuItem.Click += new System.EventHandler(this.紫色格ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 30);
+            this.toolStripMenuItem1.Text = "所有格";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -190,6 +253,13 @@
         private System.Windows.Forms.ToolStripMenuItem easyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 清除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 蓝色格ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 红色格ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 绿色格ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 紫色格ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

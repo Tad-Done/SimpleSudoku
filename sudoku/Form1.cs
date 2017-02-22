@@ -189,7 +189,7 @@ namespace sudoku
             {
                 textBox.Text = "";
                 textBox.BackColor = (readOnly)?SystemColors.Control:SystemColors.Window;
-                textBox.ForeColor = Color.Black;
+                textBox.ForeColor = (readOnly)?Color.Black:Color.Blue;
                 textBox.ReadOnly = readOnly;
             }
         }
@@ -206,6 +206,8 @@ namespace sudoku
             if (((TextBox)sender).Text.Length != 0)
                 if (((TextBox)sender).Text[0] <= '0' || ((TextBox)sender).Text[0] > '9')
                     ((TextBox)sender).Text = "";
+            //if (((TextBox)sender).Text.Length == 0)
+            //    ((TextBox)sender).ForeColor = Color.Blue;
         }
 
         private void textBox_DoubleClick(object sender,MouseEventArgs e)
@@ -490,6 +492,51 @@ namespace sudoku
         {
             SingleCheck(sender);
             diff = difficulty.hard;
+        }
+
+        private void 蓝色格ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach(TextBox textBox in tb)
+            {
+                if (textBox.ForeColor == Color.Blue && !textBox.ReadOnly)
+                    textBox.Text = "";
+            }
+        }
+
+        private void 红色格ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox textBox in tb)
+            {
+                if (textBox.ForeColor == Color.Red&&!textBox.ReadOnly)
+                    textBox.Text = "";
+            }
+        }
+
+        private void 绿色格ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox textBox in tb)
+            {
+                if (textBox.ForeColor == Color.Green && !textBox.ReadOnly)
+                    textBox.Text = "";
+            }
+        }
+
+        private void 紫色格ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox textBox in tb)
+            {
+                if (textBox.ForeColor == Color.Purple && !textBox.ReadOnly)
+                    textBox.Text = "";
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox textBox in tb)
+            {
+                if (!textBox.ReadOnly)
+                    textBox.Text = "";
+            }
         }
     }
 }
