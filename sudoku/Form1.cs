@@ -227,10 +227,17 @@ namespace sudoku
                     ((TextBox)sender).BackColor = SystemColors.Window;
                     ((TextBox)sender).ReadOnly = false;
                 }
-                else
+                else if(!(((TextBox)sender).Text==""))
                 {
                     ((TextBox)sender).BackColor = SystemColors.Control;
                     ((TextBox)sender).ReadOnly = true;
+                }
+            }
+            else
+            {
+                if (!((TextBox)sender).ReadOnly)
+                {
+                    ((TextBox)sender).Text="";
                 }
             }
         }
