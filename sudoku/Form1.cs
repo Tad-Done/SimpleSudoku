@@ -23,7 +23,9 @@ namespace sudoku
         class myTextBox : TextBox
         {
             const int WM_LBUTTONDBLCLK = 0x0203;
+            const int WM_RBUTTONDOWN = 0x0204;
             public event Mydoubleclick MyMousedoubleclick;
+            public event MyRightClick MyMouseRightClick;
 
             protected override void WndProc(ref Message m)
             {
@@ -34,6 +36,12 @@ namespace sudoku
                         MyMousedoubleclick(this, e);
                     return;
                 }
+                else if(m.Msg==WM_RBUTTONDOWN)
+                {
+                    MouseEventArgs e = new MouseEventArgs(MouseButtons.Right, 1, MousePosition.X, MousePosition.Y, 0);
+                    if (MyMouseRightClick != null)
+                        MyMouseRightClick(this, e);
+                }
                 else
                 {
                     base.WndProc(ref m);
@@ -41,6 +49,7 @@ namespace sudoku
             }
 
             public delegate void Mydoubleclick(object sender, MouseEventArgs e);
+            public delegate void MyRightClick(object sender, MouseEventArgs e);
         }
 
         class Coord
@@ -166,6 +175,7 @@ namespace sudoku
 
                 tb[i].TextChanged += textBox_TextChanged;
                 tb[i].MyMousedoubleclick += textBox_DoubleClick;
+                tb[i].MyMouseRightClick += textBox_RightClick;
                 
                 Controls.Add(tb[i]);
                 cells[i % 9, i / 9] = new Cell();
@@ -206,8 +216,23 @@ namespace sudoku
             if (((TextBox)sender).Text.Length != 0)
                 if (((TextBox)sender).Text[0] <= '0' || ((TextBox)sender).Text[0] > '9')
                     ((TextBox)sender).Text = "";
-            //if (((TextBox)sender).Text.Length == 0)
-            //    ((TextBox)sender).ForeColor = Color.Blue;
+        }
+
+        private void textBox_RightClick(object sender,MouseEventArgs e)
+        {
+            if(!ToolStripMenuItemGen.Checked)
+            {
+                if (((TextBox)sender).ReadOnly)
+                {
+                    ((TextBox)sender).BackColor = SystemColors.Window;
+                    ((TextBox)sender).ReadOnly = false;
+                }
+                else
+                {
+                    ((TextBox)sender).BackColor = SystemColors.Control;
+                    ((TextBox)sender).ReadOnly = true;
+                }
+            }
         }
 
         private void textBox_DoubleClick(object sender,MouseEventArgs e)
@@ -411,7 +436,8 @@ namespace sudoku
                         {
                             if (coCurrent.x == 0 && coCurrent.y == 0)
                             {
-                                break;
+                                MessageBox.Show("无法生成！");
+                                return;
                             }
                             else
                             {
