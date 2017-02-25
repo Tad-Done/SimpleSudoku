@@ -19,6 +19,8 @@ namespace sudoku
         myTextBox[] tb = new myTextBox[81];
         static Random ran = new Random();
         Color[] colorList = new Color[4] { Color.Blue,Color.Red,Color.Green,Color.Purple};
+        System.Timers.Timer timer = new System.Timers.Timer();
+        int hour, mint, sec;
 
         class myTextBox : TextBox
         {
@@ -158,9 +160,33 @@ namespace sudoku
             return ret;
         }
 
+        private void timer_click(object sender,System.Timers.ElapsedEventArgs e)
+        {
+            if (++sec == 60)
+            {
+                sec = 0;
+                if (++mint == 60)
+                {
+                    mint = 0;
+                    hour++;
+                }
+            }
+            labelTimer.Text = string.Format("{0}:{1}:{2}", hour, (mint.ToString().Length == 1) ? '0' + mint.ToString() : mint.ToString(), (sec.ToString().Length == 1) ? '0' + sec.ToString() : sec.ToString());
+        }
+
+        private void timer_clear()
+        {
+            timer.Stop();
+            hour = mint = sec = 0;
+            labelTimer.Text = "0:00:00";
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            //diff = difficulty.easy;
+            timer.Interval = 1000;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_click);
+            timer.SynchronizingObject = this;
+            hour = mint = sec = 0;
             for(int i = 0; i < 81; i++)
             {
                 tb[i] = new myTextBox();
@@ -174,6 +200,8 @@ namespace sudoku
                 tb[i].TabIndex = 83;
 
                 tb[i].TextChanged += textBox_TextChanged;
+                tb[i].GotFocus += textBox_GetFocus;
+                tb[i].LostFocus += textBox_LoseFocus;
                 tb[i].MyMousedoubleclick += textBox_DoubleClick;
                 tb[i].MyMouseRightClick += textBox_RightClick;
                 
@@ -216,9 +244,11 @@ namespace sudoku
             if (((TextBox)sender).Text.Length != 0)
                 if (((TextBox)sender).Text[0] <= '0' || ((TextBox)sender).Text[0] > '9')
                     ((TextBox)sender).Text = "";
+            if(((TextBox)sender).Focused)
+                textBox_GetFocus(sender, e);
         }
 
-        private void textBox_RightClick(object sender,MouseEventArgs e)
+        private void textBox_DoubleClick(object sender,MouseEventArgs e)
         {
             if(!ToolStripMenuItemGen.Checked)
             {
@@ -242,16 +272,53 @@ namespace sudoku
             }
         }
 
-        private void textBox_DoubleClick(object sender,MouseEventArgs e)
+        private void textBox_RightClick(object sender,MouseEventArgs e)
         {
+            if (((TextBox)sender).Text == "")
+                return;
             int ind = Array.IndexOf(colorList, ((TextBox)sender).ForeColor);
             if (ind != -1)
                 ((TextBox)sender).ForeColor = colorList[(ind + 1) % 4];
+        }
+        
+        private void textBox_GetFocus(object sender,EventArgs e)
+        {
+            if (!ToolStripMenuItemGen.Checked)
+                return;
+            //textBox_LoseFocus();
+            if(((TextBox)sender).Text!="")
+            {
+                foreach(TextBox textbox in tb)
+                {
+                    if(textbox.Text== ((TextBox)sender).Text)
+                    {
+                        textbox.BackColor = Color.Yellow;
+                    }
+                }
+            }
+        }
+
+        private void textBox_LoseFocus(object sender=null,EventArgs e=null)
+        {
+            if (!ToolStripMenuItemGen.Checked)
+                return;
+            foreach (TextBox textbox in tb)
+            {
+                if (textbox.ReadOnly)
+                {
+                    textbox.BackColor = SystemColors.Control;
+                }
+                else
+                {
+                    textbox.BackColor = SystemColors.Window;
+                }
+            }
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             tbInit();
+            timer_clear();
             Coord coCurrent=new Coord();
             foreach (Cell cell in cells)
                 cell.Clear();
@@ -292,7 +359,6 @@ namespace sudoku
                         coCurrent.PrevCoord();
                     }
                 }
-                
             }
             HashSet<int> set = new HashSet<int>();
             Random ran = new Random();
@@ -309,6 +375,7 @@ namespace sudoku
                     tb[i].ForeColor = Color.Blue;
                 }
             }
+            timer.Start();
         }
 
         private int check(bool mode=true)
@@ -341,7 +408,7 @@ namespace sudoku
                     if (mat[i, j] != 0)
                         if (flag[mat[i, j] - 1])
                         {
-                            MessageBox.Show("有错误！");
+                            MessageBox.Show(String.Format("第{0}行有错误！",i+1));
                             return -1;
                         }
                         else
@@ -352,7 +419,7 @@ namespace sudoku
                     if (mat[j, i] != 0)
                         if (flagt[mat[j, i] - 1])
                         {
-                            MessageBox.Show("有错误！");
+                            MessageBox.Show(String.Format("第{0}列有错误！", i + 1));
                             return -1;
                         }
                         else
@@ -363,7 +430,7 @@ namespace sudoku
                     if (mat[i - i % 3 + j / 3, (i % 3) * 3 + j % 3] != 0)
                         if (flagb[mat[i - i % 3 + j / 3, (i % 3) * 3 + j % 3] - 1])
                         {
-                            MessageBox.Show("有错误！");
+                            MessageBox.Show(String.Format("第{0}大格有错误！", i + 1));
                             return -1;
                         }
                         else
@@ -372,8 +439,11 @@ namespace sudoku
                         }
                 }
             }
-            if(mode)
-                MessageBox.Show("完成！");
+            if (mode)
+            {
+                MessageBox.Show("正确完成！");
+                timer.Stop();
+            }
             return 0;
         }
 
@@ -398,6 +468,7 @@ namespace sudoku
                         return;
                     }
                 }
+                timer.Stop();
             }
             else if(check(false)==0)
             {
@@ -489,12 +560,15 @@ namespace sudoku
             buttonCheck.Visible = true;
             buttonGenerate.Visible = true;
             buttonClear.Visible = false;
+            labelTimer.Visible = true;
         }
 
         private void ToolStripMenuItemSolve_Click(object sender, EventArgs e)
         {
             if (ToolStripMenuItemSolve.Checked == true)
                 return;
+            timer_clear();
+            labelTimer.Visible = false;
             SingleCheck(sender);
             tbInit(false);
             buttonCheck.Visible = false;
@@ -513,18 +587,21 @@ namespace sudoku
         {
             SingleCheck(sender);
             diff = difficulty.easy;
+            buttonGenerate_Click(sender,e);
         }
 
         private void normalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SingleCheck(sender);
             diff = difficulty.normal;
+            buttonGenerate_Click(sender, e);
         }
 
         private void difficultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SingleCheck(sender);
             diff = difficulty.hard;
+            buttonGenerate_Click(sender, e);
         }
 
         private void 蓝色格ToolStripMenuItem_Click(object sender, EventArgs e)

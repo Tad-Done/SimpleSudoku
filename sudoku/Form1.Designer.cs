@@ -39,20 +39,21 @@
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.清除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.蓝色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.红色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.绿色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.紫色格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.labelTimer = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCheck
             // 
-            this.buttonCheck.Location = new System.Drawing.Point(200, 552);
+            this.buttonCheck.Location = new System.Drawing.Point(200, 599);
             this.buttonCheck.Name = "buttonCheck";
             this.buttonCheck.Size = new System.Drawing.Size(114, 44);
             this.buttonCheck.TabIndex = 81;
@@ -62,7 +63,7 @@
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(12, 552);
+            this.buttonGenerate.Location = new System.Drawing.Point(12, 599);
             this.buttonGenerate.Name = "buttonGenerate";
             this.buttonGenerate.Size = new System.Drawing.Size(114, 44);
             this.buttonGenerate.TabIndex = 82;
@@ -72,7 +73,7 @@
             // 
             // buttonAnswer
             // 
-            this.buttonAnswer.Location = new System.Drawing.Point(387, 552);
+            this.buttonAnswer.Location = new System.Drawing.Point(387, 599);
             this.buttonAnswer.Name = "buttonAnswer";
             this.buttonAnswer.Size = new System.Drawing.Size(114, 44);
             this.buttonAnswer.TabIndex = 83;
@@ -151,17 +152,6 @@
             this.hardToolStripMenuItem.Text = "hard";
             this.hardToolStripMenuItem.Click += new System.EventHandler(this.difficultToolStripMenuItem_Click);
             // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(12, 552);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(114, 44);
-            this.buttonClear.TabIndex = 85;
-            this.buttonClear.Text = "清空";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Visible = false;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
             // 编辑ToolStripMenuItem
             // 
             this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -179,49 +169,70 @@
             this.绿色格ToolStripMenuItem,
             this.紫色格ToolStripMenuItem});
             this.清除ToolStripMenuItem.Name = "清除ToolStripMenuItem";
-            this.清除ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.清除ToolStripMenuItem.Size = new System.Drawing.Size(129, 30);
             this.清除ToolStripMenuItem.Text = "清除";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 30);
+            this.toolStripMenuItem1.Text = "所有格";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // 蓝色格ToolStripMenuItem
             // 
             this.蓝色格ToolStripMenuItem.Name = "蓝色格ToolStripMenuItem";
-            this.蓝色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.蓝色格ToolStripMenuItem.Size = new System.Drawing.Size(147, 30);
             this.蓝色格ToolStripMenuItem.Text = "蓝色格";
             this.蓝色格ToolStripMenuItem.Click += new System.EventHandler(this.蓝色格ToolStripMenuItem_Click);
             // 
             // 红色格ToolStripMenuItem
             // 
             this.红色格ToolStripMenuItem.Name = "红色格ToolStripMenuItem";
-            this.红色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.红色格ToolStripMenuItem.Size = new System.Drawing.Size(147, 30);
             this.红色格ToolStripMenuItem.Text = "红色格";
             this.红色格ToolStripMenuItem.Click += new System.EventHandler(this.红色格ToolStripMenuItem_Click);
             // 
             // 绿色格ToolStripMenuItem
             // 
             this.绿色格ToolStripMenuItem.Name = "绿色格ToolStripMenuItem";
-            this.绿色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.绿色格ToolStripMenuItem.Size = new System.Drawing.Size(147, 30);
             this.绿色格ToolStripMenuItem.Text = "绿色格";
             this.绿色格ToolStripMenuItem.Click += new System.EventHandler(this.绿色格ToolStripMenuItem_Click);
             // 
             // 紫色格ToolStripMenuItem
             // 
             this.紫色格ToolStripMenuItem.Name = "紫色格ToolStripMenuItem";
-            this.紫色格ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.紫色格ToolStripMenuItem.Size = new System.Drawing.Size(147, 30);
             this.紫色格ToolStripMenuItem.Text = "紫色格";
             this.紫色格ToolStripMenuItem.Click += new System.EventHandler(this.紫色格ToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // buttonClear
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 30);
-            this.toolStripMenuItem1.Text = "所有格";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.buttonClear.Location = new System.Drawing.Point(12, 599);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(114, 44);
+            this.buttonClear.TabIndex = 85;
+            this.buttonClear.Text = "清空";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Visible = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(226, 568);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(71, 18);
+            this.labelTimer.TabIndex = 86;
+            this.labelTimer.Text = "0:00:00";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 608);
+            this.ClientSize = new System.Drawing.Size(513, 656);
+            this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonAnswer);
             this.Controls.Add(this.buttonGenerate);
@@ -260,6 +271,7 @@
         private System.Windows.Forms.ToolStripMenuItem 绿色格ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 紫色格ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label labelTimer;
     }
 }
 
