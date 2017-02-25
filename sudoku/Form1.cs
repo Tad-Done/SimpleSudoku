@@ -286,16 +286,18 @@ namespace sudoku
             if (!ToolStripMenuItemGen.Checked)
                 return;
             //textBox_LoseFocus();
-            if(((TextBox)sender).Text!="")
+            if (((TextBox)sender).Text != "")
             {
-                foreach(TextBox textbox in tb)
+                foreach (TextBox textbox in tb)
                 {
-                    if(textbox.Text== ((TextBox)sender).Text)
+                    if (textbox.Text == ((TextBox)sender).Text)
                     {
                         textbox.BackColor = Color.Yellow;
                     }
                 }
             }
+            else
+                textBox_LoseFocus();
         }
 
         private void textBox_LoseFocus(object sender=null,EventArgs e=null)
@@ -319,6 +321,7 @@ namespace sudoku
         {
             tbInit();
             timer_clear();
+            buttonGenerate.Focus();
             Coord coCurrent=new Coord();
             foreach (Cell cell in cells)
                 cell.Clear();
@@ -585,6 +588,8 @@ namespace sudoku
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (easyToolStripMenuItem.Checked)
+                return;
             SingleCheck(sender);
             diff = difficulty.easy;
             buttonGenerate_Click(sender,e);
@@ -592,6 +597,8 @@ namespace sudoku
 
         private void normalToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (normalToolStripMenuItem.Checked)
+                return;
             SingleCheck(sender);
             diff = difficulty.normal;
             buttonGenerate_Click(sender, e);
@@ -599,6 +606,8 @@ namespace sudoku
 
         private void difficultToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (hardToolStripMenuItem.Checked)
+                return;
             SingleCheck(sender);
             diff = difficulty.hard;
             buttonGenerate_Click(sender, e);
